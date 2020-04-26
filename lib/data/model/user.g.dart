@@ -6,6 +6,255 @@ part of 'user.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<User> _$userSerializer = new _$UserSerializer();
+Serializer<Address> _$addressSerializer = new _$AddressSerializer();
+Serializer<Geo> _$geoSerializer = new _$GeoSerializer();
+Serializer<Company> _$companySerializer = new _$CompanySerializer();
+
+class _$UserSerializer implements StructuredSerializer<User> {
+  @override
+  final Iterable<Type> types = const [User, _$User];
+  @override
+  final String wireName = 'User';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, User object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'id',
+      serializers.serialize(object.id, specifiedType: const FullType(int)),
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'username',
+      serializers.serialize(object.username,
+          specifiedType: const FullType(String)),
+      'email',
+      serializers.serialize(object.email,
+          specifiedType: const FullType(String)),
+      'address',
+      serializers.serialize(object.address,
+          specifiedType: const FullType(Address)),
+      'phone',
+      serializers.serialize(object.phone,
+          specifiedType: const FullType(String)),
+      'website',
+      serializers.serialize(object.website,
+          specifiedType: const FullType(String)),
+      'company',
+      serializers.serialize(object.company,
+          specifiedType: const FullType(Company)),
+    ];
+
+    return result;
+  }
+
+  @override
+  User deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new UserBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'username':
+          result.username = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'email':
+          result.email = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'address':
+          result.address.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Address)) as Address);
+          break;
+        case 'phone':
+          result.phone = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'website':
+          result.website = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'company':
+          result.company.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Company)) as Company);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$AddressSerializer implements StructuredSerializer<Address> {
+  @override
+  final Iterable<Type> types = const [Address, _$Address];
+  @override
+  final String wireName = 'Address';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, Address object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'street',
+      serializers.serialize(object.street,
+          specifiedType: const FullType(String)),
+      'suite',
+      serializers.serialize(object.suite,
+          specifiedType: const FullType(String)),
+      'city',
+      serializers.serialize(object.city, specifiedType: const FullType(String)),
+      'zipCode',
+      serializers.serialize(object.zipCode,
+          specifiedType: const FullType(String)),
+      'geo',
+      serializers.serialize(object.geo, specifiedType: const FullType(Geo)),
+    ];
+
+    return result;
+  }
+
+  @override
+  Address deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new AddressBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'street':
+          result.street = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'suite':
+          result.suite = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'city':
+          result.city = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'zipCode':
+          result.zipCode = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'geo':
+          result.geo.replace(serializers.deserialize(value,
+              specifiedType: const FullType(Geo)) as Geo);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$GeoSerializer implements StructuredSerializer<Geo> {
+  @override
+  final Iterable<Type> types = const [Geo, _$Geo];
+  @override
+  final String wireName = 'Geo';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, Geo object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'lat',
+      serializers.serialize(object.lat, specifiedType: const FullType(String)),
+      'lng',
+      serializers.serialize(object.lng, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  Geo deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new GeoBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'lat':
+          result.lat = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'lng':
+          result.lng = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$CompanySerializer implements StructuredSerializer<Company> {
+  @override
+  final Iterable<Type> types = const [Company, _$Company];
+  @override
+  final String wireName = 'Company';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, Company object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'name',
+      serializers.serialize(object.name, specifiedType: const FullType(String)),
+      'catchPhrase',
+      serializers.serialize(object.catchPhrase,
+          specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  Company deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new CompanyBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'name':
+          result.name = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'catchPhrase':
+          result.catchPhrase = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$User extends User {
   @override
   final int id;

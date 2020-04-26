@@ -6,7 +6,9 @@ part 'user.g.dart';
 
 abstract class User implements Built<User, UserBuilder> {
 
-  int get id;
+static Serializer<User> get serializer => _$userSerializer;
+
+int get id;
 
   String get name;
 
@@ -28,6 +30,9 @@ abstract class User implements Built<User, UserBuilder> {
 }
 
 abstract class Address implements Built<Address, AddressBuilder> {
+
+  static Serializer<Address> get serializer => _$addressSerializer;
+
   String get street;
 
   String get suite;
@@ -44,6 +49,9 @@ abstract class Address implements Built<Address, AddressBuilder> {
 }
 
 abstract class Geo implements Built<Geo, GeoBuilder> {
+
+  static Serializer<Geo> get serializer => _$geoSerializer;
+
   String get lat;
 
   String get lng;
@@ -54,6 +62,9 @@ abstract class Geo implements Built<Geo, GeoBuilder> {
 }
 
 abstract class Company implements Built<Company, CompanyBuilder> {
+
+  static Serializer<Company> get serializer => _$companySerializer;
+
   String get name;
 
   String get catchPhrase;
