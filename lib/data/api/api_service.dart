@@ -1,4 +1,5 @@
 import 'package:chopper/chopper.dart';
+import 'package:flutterchopperbloc/data/api/built_value_converter.dart';
 
 part 'api_service.chopper.dart';
 
@@ -14,7 +15,8 @@ abstract class ApiService extends ChopperService {
     final client = ChopperClient(
       baseUrl: 'https://jsonplaceholder.typicode.com',
       services: [_$ApiService()],
-      converter: JsonConverter(),
+      converter: BuiltValueConverter(),
+      errorConverter: BuiltValueConverter(),
     );
     return _$ApiService(client);
   }
